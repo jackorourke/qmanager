@@ -19,7 +19,17 @@ class VisitsController < ApplicationController
 	end
 
 	def index
-		@visits = Visit.all
+		@visits = Visit.where(user_id: current_user.id)
+	end
+
+	def destroy
+		@visit = Visit.find(params[:id])
+		@visit.destroy
+		@visits = Visit.where(user_id: current_user.id)
+
+		#update_queue_positions(@visits)
+
+		redirect_to visits_path
 	end
 
 	private

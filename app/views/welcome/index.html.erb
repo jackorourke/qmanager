@@ -2,3 +2,6 @@
 
 <h3><%= link_to 'Create new appointment', new_visit_path %></h3>
 
+<% if user_signed_in? %>
+	<h3><%= link_to 'See Queue', visits_path %></h3>
+<% end %>

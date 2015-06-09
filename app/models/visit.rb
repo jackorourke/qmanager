@@ -5,4 +5,6 @@ class Visit < ActiveRecord::Base
 	def set_time_to_now
     	self.time = Time.now
   	end
+  	
+
 end
