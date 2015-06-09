@@ -1,0 +1,40 @@
+<h2>New Appointment</h2>
+<%= form_for @visit do |f| %>
+	<div class="field">
+		<%= f.label :user_id %><br />
+		<%= f.collection_select(:user_id, User.all, :id, :name ) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :contact_number %><br />
+		<%= f.text_field :contact_number, autofocus: true %>
+	</div>
+
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :age %><br />
+		<%= f.number_field :age%>
+	</div>
+
+	<div class="field">
+		<%= f.label :symptoms %><br />
+		<%= f.text_area :symptoms %>
+	</div>
+
+	<div class="field">
+		<%= f.label :travel_time %><br />
+		<%= f.number_field :travel_time%>
+	</div>
+
+	<div class="actions">
+    	<%= f.submit "Submit" %>
+  	</div>
+<% end %>
+
+<br><br>
+
+<%= link_to 'Back to home', root_path %>
