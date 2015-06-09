@@ -1,3 +1,16 @@
+<% if @patient.errors.any? %>
+	<h2>
+		<%= pluralize(@patient.errors.count, "error") %>
+		prohibited this place from being saved
+	</h2>
+	<ul>
+		<% @patient.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+
 <%= form_for @patient do |f| %>
 	<div class="field">
 		<%= f.label :name %><br />
