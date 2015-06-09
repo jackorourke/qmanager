@@ -18,6 +18,10 @@ class VisitsController < ApplicationController
 		@visit = Visit.find(params[:id])
 	end
 
+	def index
+		@visits = Visit.all
+	end
+
 	private
 		def visit_params
 			params.require(:visit).permit(:contact_number,:name,:age,:symptoms,:travel_time,:user_id)

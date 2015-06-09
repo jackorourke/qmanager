@@ -1,0 +1,19 @@
+<h1>Your Upcoming Visits</h1>
+
+<table>
+	<tr>
+		<th>Queue Number</th>
+		<th>Name</th>
+		<th>Patient Age</th>
+		<th>Symptoms</th>
+		<th colspan="4"></th>
+	</tr>
+	<% @visits.each do |visit| %>
+	<tr>
+		<td>1</td>
+		<td><%= visit.name %></td>
+		<td><%= visit.age %></td>
+		<td><%= visit.symptoms %></td>
+	</tr>
+	<% end %>
+</table>
