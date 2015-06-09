@@ -1,0 +1,24 @@
+<%= form_for @patient do |f| %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name, autofocus: true %>
+	</div>
+
+	<div class="field">
+		<%= f.label :date_of_birth %><br />
+		<%= f.date_field :date_of_birth %>
+	</div>
+
+	<div class="field">
+		<%= f.label :contact_number %><br />
+		<%= f.text_field :contact_number %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Sign up" %>
+	</div>
+<% end %>
+
+<br><br>
+
+<%= link_to 'Home', root_path %>
