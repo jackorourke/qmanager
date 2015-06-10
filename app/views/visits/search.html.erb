@@ -1,0 +1,10 @@
+<%= form_tag(search_visits_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Appointments" %>
+  <%= submit_tag "Search for your appointment", :name => nil %>
+<% end %>
+
+<% if @searched %>
+	<% @visits.each do |visit| %>
+		<p><%= link_to visit.name, visit_path(visit) %></p>
+	<% end %>
+<% end %>

@@ -37,6 +37,16 @@ class VisitsController < ApplicationController
 		redirect_to visits_path
 	end
 
+	def search
+		@searched = false
+		if params[:search] && params[:search] != ""
+			@visits = Visit.search(params[:search]).order("created_at DESC")
+			@searched = true
+			render 'search'
+		end
+	end
+
+
 	private
 		def visit_params
 			params.require(:visit).permit(:contact_number,:name,:age,:symptoms,:travel_time,:user_id)
