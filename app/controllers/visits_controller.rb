@@ -38,6 +38,8 @@ class VisitsController < ApplicationController
 		@visit.destroy
 		@visits = Visit.where(user_id: current_user.id)
 
+		check_for_reminder(@visits)
+
 		redirect_to visits_path
 	end
 
