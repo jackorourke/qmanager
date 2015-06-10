@@ -1,17 +1,21 @@
 class VisitsController < ApplicationController
 	include VisitsHelper
+
 	def new
 		@visit = Visit.new
 		@doctors = User.all
 	end
 
 	def create
-		@visit = Visit.create(visit_params)
+		@visit = Visit.new(visit_params)
 
 		if @visit.save
 			@visits = Visit.where(user_id: @visit.user_id).order(created_at: :asc)
-			estimate_wait_time(@visits, @visit)		#MUST WRITE THIS METHOD
-			#send_confirm_sms
+			#estimate the initial wait time for new patient
+			time = estimate_wait_time(@visits, @visit)
+			#send a confirmation text to the patient
+			notify(@visit.contact_number, @visit.name, @visit.user.name, time)
+			
 			redirect_to @visit
 		else
 			render 'new'
