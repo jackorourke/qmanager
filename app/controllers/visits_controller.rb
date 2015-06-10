@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+	include VisitsHelper
 	def new
 		@visit = Visit.new
 		@doctors = User.all
@@ -8,6 +9,9 @@ class VisitsController < ApplicationController
 		@visit = Visit.create(visit_params)
 
 		if @visit.save
+			@visits = Visit.where(user_id: @visit.user_id).order(created_at: :asc)
+			estimate_wait_time(@visits, @visit)		#MUST WRITE THIS METHOD
+			#send_confirm_sms
 			redirect_to @visit
 		else
 			render 'new'
@@ -16,18 +20,19 @@ class VisitsController < ApplicationController
 
 	def show
 		@visit = Visit.find(params[:id])
+
+		@visits = Visit.where(user_id: @visit.user_id).order(created_at: :asc)
+		@wait_time = estimate_wait_time(@visits, @visit)
 	end
 
 	def index
-		@visits = Visit.where(user_id: current_user.id)
+		@visits = Visit.where(user_id: current_user.id).order(created_at: :asc)
 	end
 
 	def destroy
 		@visit = Visit.find(params[:id])
 		@visit.destroy
 		@visits = Visit.where(user_id: current_user.id)
-
-		#update_queue_positions(@visits)
 
 		redirect_to visits_path
 	end

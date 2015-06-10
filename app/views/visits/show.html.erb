@@ -1,4 +1,6 @@
 <h2>Appointment for Dr. <%=@visit.user.name%></h2>
 
+<h3>Queue Number: <%= @visits.index(@visit) + 1 %></h3>
 <p><%= @visit.name %></p>
-<p>Appointment created at <%= @visit.created_at %></p>
+
+<p>Estimated time to wait: <%= @wait_time %> minutes</p>
