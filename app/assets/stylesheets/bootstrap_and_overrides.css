@@ -1,7 +1,23 @@
 /*
-  =require twitter-bootstrap-static/bootstrap
+ *= require twitter-bootstrap-static/fontawesome
+ *= require twitter-bootstrap-static/bootstrap
+ * Use Font Awesome icons (default)
+ * To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+ */
 
-  Use Font Awesome icons (default)
-  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
-  */
+  .navbar {
+  	background-color: #2c3e50;
+  }
+
+  .navbar-default .navbar-brand {
+  	color: white;
+  }
+
+  .navbar-default .navbar-nav>li>a {
+  	color: white;
+  }
+
+  
+button, input, optgroup, select, textarea {
+  	color: black;
+  }

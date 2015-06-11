@@ -1,9 +1,18 @@
-<h1>Welcome to QManager</h1>
-
-<h3><%= link_to 'Create new appointment', new_visit_path %></h3>
-
-<% if user_signed_in? %>
-	<h3><%= link_to 'See Queue', visits_path %></h3>
-<% else %>
-	<h3><%= link_to 'Find your appointment', search_visits_path %></h3>
-<% end %>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile2.png" width="240px" alt="">
+                    <div class="intro-text">
+                        <span class="name">QManager</span>
+                        <hr class="star-light">
+                        <span class="skills">Saving you time in line</span>
+                    </div>
+                    <div>
+                        <a href=<%= new_visit_path %> class="btn btn-large btn-primary" role="button"><i class="fa fa-plus-square-o"></i> Create new appointment</a>
+                        <a href=<%= search_visits_path %> class="btn btn-large btn-info" role="button"><i class="fa fa-search"></i> Find your appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
